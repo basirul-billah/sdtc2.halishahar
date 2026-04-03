@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>কম্পিউটার অফিস অ্যাপ্লিকেশন – দক্ষতা উন্নয়ন প্রশিক্ষণ কেন্দ্র</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--green:#1a6b3c;--green-mid:#22883f;--green-lt:#d6f0e0;--gold:#c9952a;--gold-lt:#f5e8c8;--bg:#f7f9f5;--card-bg:#ffffff;--text:#1a2320;--muted:#5a6b61;--border:#d0ddd5;--radius:14px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:var(--bg);color:var(--text)}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(247,249,245,.92);backdrop-filter:blur(14px);border-bottom:1.5px solid var(--border);padding:0 5vw}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1200px;margin:auto}
+    .nav-logo{display:flex;flex-direction:column;line-height:1.2}
+    .nav-logo .title{font-family:'Noto Serif Bengali',serif;font-size:1rem;font-weight:700;color:var(--green)}
+    .nav-logo .sub{font-size:.7rem;color:var(--muted)}
+    .back-btn{display:flex;align-items:center;gap:8px;background:var(--green-lt);color:var(--green);border:none;padding:9px 18px;border-radius:8px;font-family:'Hind Siliguri',sans-serif;font-weight:600;font-size:.88rem;cursor:pointer;text-decoration:none;transition:background .2s}
+    .back-btn:hover{background:#b6e0c8}
+
+    /* HERO STRIP */
+    .course-hero{padding-top:66px;background:linear-gradient(135deg,#0d3d21,#1a6b3c);padding-bottom:40px}
+    .course-hero-inner{max-width:1200px;margin:auto;padding:50px 5vw 0;display:flex;align-items:center;gap:16px}
+    .course-emoji{font-size:3rem;background:rgba(255,255,255,.12);border-radius:16px;width:72px;height:72px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .course-hero-text .badge{display:inline-block;background:var(--gold);color:#fff;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:4px;margin-bottom:8px}
+    .course-hero-text h1{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-bottom:6px}
+    .course-hero-text p{color:rgba(255,255,255,.75);font-size:.92rem}
+
+    /* MAIN LAYOUT */
+    .course-main{max-width:1200px;margin:auto;padding:48px 5vw;display:grid;grid-template-columns:1fr 1.65fr;gap:48px;align-items:start}
+    @media(max-width:860px){.course-main{grid-template-columns:1fr}}
+
+    /* IMAGE GALLERY */
+    .gallery{display:flex;flex-direction:column;gap:14px;position:sticky;top:86px}
+    .gallery-main{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:var(--green-lt);display:flex;align-items:center;justify-content:center;font-size:6rem;position:relative}
+    .gallery-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .thumb{border-radius:10px;aspect-ratio:1;background:var(--green-lt);display:flex;align-items:center;justify-content:center;font-size:2.5rem;cursor:pointer;border:2px solid transparent;transition:border-color .2s}
+    .thumb.active{border-color:var(--green)}
+    .gallery-caption{text-align:center;font-size:.82rem;color:var(--muted);padding-top:4px}
+
+    /* CONTENT */
+    .course-content{}
+    .content-card{background:var(--card-bg);border-radius:var(--radius);border:1.5px solid var(--border);padding:30px;margin-bottom:20px}
+    .card-title{font-family:'Noto Serif Bengali',serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+    .card-title .icon{font-size:1.3rem}
+    .learn-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .learn-list li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;line-height:1.6}
+    .learn-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:2px}
+    .syllabus-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold-lt);color:var(--gold);border:2px solid var(--gold);padding:11px 22px;border-radius:10px;font-family:'Hind Siliguri',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none;transition:background .2s}
+    .syllabus-btn:hover{background:var(--gold);color:#fff}
+
+    /* META GRID */
+    .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+    .meta-box{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+    .meta-box .emoji{font-size:1.5rem;margin-bottom:6px}
+    .meta-box .label{font-size:.75rem;color:var(--muted);margin-bottom:4px}
+    .meta-box .value{font-family:'Noto Serif Bengali',serif;font-weight:700;color:var(--text);font-size:.95rem}
+
+    /* PRICE BOX */
+    .price-box{background:linear-gradient(135deg,#0d3d21,#1a6b3c);border-radius:var(--radius);padding:28px;color:#fff;margin-bottom:20px}
+    .price-label{font-size:.82rem;opacity:.8;margin-bottom:6px}
+    .price-amount{font-family:'Noto Serif Bengali',serif;font-size:2.2rem;font-weight:800;color:var(--gold)}
+    .price-note{font-size:.82rem;opacity:.7;margin-top:6px}
+    .enroll-btn{display:block;width:100%;background:var(--gold);color:#fff;border:none;padding:15px;border-radius:10px;font-family:'Hind Siliguri',sans-serif;font-weight:700;font-size:1.05rem;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 16px rgba(201,149,42,.4);margin-top:18px;text-align:center;text-decoration:none}
+    .enroll-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,149,42,.5)}
+    .contact-note{text-align:center;font-size:.8rem;opacity:.7;margin-top:12px}
+
+    footer{background:#0d2318;color:rgba(255,255,255,.7);text-align:center;padding:24px 5vw;font-size:.82rem;margin-top:40px}
+    footer a{color:var(--gold);text-decoration:none}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="title">দক্ষতা উন্নয়ন প্রশিক্ষণ কেন্দ্র</span>
+      <span class="sub">সমাজসেবা অধিদপ্তর, হালিশহর, চট্টগ্রাম</span>
+    </div>
+    <a class="back-btn" href="index.html">← হোমপেজে ফিরুন</a>
+  </div>
+</nav>
+
+<div class="course-hero">
+  <div class="course-hero-inner">
+    <div class="course-emoji">💻</div>
+    <div class="course-hero-text">
+      <span class="badge">BTEB অনুমোদিত · ভর্তি চলছে</span>
+      <h1>কম্পিউটার অফিস অ্যাপ্লিকেশন</h1>
+      <p>মাত্র ২৫০০ টাকায় সরকারি সনদ সহ সম্পূর্ণ কম্পিউটার প্রশিক্ষণ</p>
+    </div>
+  </div>
+</div>
+
+<div class="course-main">
+  <!-- LEFT: Gallery -->
+  <div class="gallery">
+    <div class="gallery-main" id="mainImg">
+      <span id="mainEmoji">💻</span>
+    </div>
+    <div class="gallery-thumbs">
+      <div class="thumb active" onclick="selectThumb(this,'💻','MS Word ও Excel')">💻</div>
+      <div class="thumb" onclick="selectThumb(this,'📊','ডেটা এন্ট্রি')">📊</div>
+      <div class="thumb" onclick="selectThumb(this,'📧','Email ও Internet')">📧</div>
+      <div class="thumb" onclick="selectThumb(this,'📝','PowerPoint')">📝</div>
+      <div class="thumb" onclick="selectThumb(this,'🖨️','প্রিন্টিং ও স্ক্যানিং')">🖨️</div>
+      <div class="thumb" onclick="selectThumb(this,'🎓','সনদ প্রদান')">🎓</div>
+    </div>
+    <p class="gallery-caption" id="galleryCaption">MS Word ও Excel প্রশিক্ষণ</p>
+  </div>
+
+  <!-- RIGHT: Content -->
+  <div class="course-content">
+    <!-- Learn -->
+    <div class="content-card">
+      <div class="card-title"><span class="icon">📚</span> এই কোর্সে যা শিখবেন</div>
+      <ul class="learn-list">
+        <li>Microsoft Word — টাইপিং, ফরম্যাটিং, টেবিল তৈরি, চিঠি ও দলিল প্রস্তুত</li>
+        <li>Microsoft Excel — স্প্রেডশিট, সূত্র, চার্ট, হিসাব-নিকাশ পরিচালনা</li>
+        <li>Microsoft PowerPoint — স্লাইড ডিজাইন ও প্রেজেন্টেশন তৈরি</li>
+        <li>Internet ব্রাউজিং — তথ্য অনুসন্ধান, নিরাপদ ব্রাউজিং</li>
+        <li>Email পরিচালনা — অ্যাকাউন্ট তৈরি, চিঠি পাঠানো, অ্যাটাচমেন্ট</li>
+        <li>ডেটা এন্ট্রি — দ্রুত ও নির্ভুল তথ্য প্রবেশের কৌশল</li>
+        <li>প্রিন্টিং ও স্ক্যানিং — অফিসে ব্যবহারিক দক্ষতা</li>
+        <li>বাংলা ও ইংরেজি টাইপিং — উভয় ভাষায় দ্রুত টাইপিং</li>
+      </ul>
+    </div>
+
+    <!-- Syllabus -->
+    <div class="content-card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div>
+        <div class="card-title" style="margin-bottom:6px"><span class="icon">📄</span> বিস্তারিত সিলেবাস</div>
+        <p style="font-size:.85rem;color:var(--muted)">BTEB অনুমোদিত পূর্ণ সিলেবাস দেখুন</p>
+      </div>
+      <a class="syllabus-btn" href="https://drive.google.com/drive/folders/YOUR_COMPUTER_SYLLABUS_LINK" target="_blank">📄 সিলেবাস দেখুন</a>
+    </div>
+
+    <!-- Meta -->
+    <div class="meta-grid">
+      <div class="meta-box"><div class="emoji">📅</div><div class="label">রেগুলার কোর্স</div><div class="value">২ মাস</div></div>
+      <div class="meta-box"><div class="emoji">⚡</div><div class="label">র‍্যাপিড কোর্স</div><div class="value">১ মাস</div></div>
+      <div class="meta-box"><div class="emoji">📆</div><div class="label">রেগুলার ক্লাস</div><div class="value">সপ্তাহে ৩ দিন</div></div>
+      <div class="meta-box"><div class="emoji">🕐</div><div class="label">র‍্যাপিড ক্লাস</div><div class="value">প্রতিদিন</div></div>
+    </div>
+
+    <!-- Price & CTA -->
+    <div class="price-box">
+      <div class="price-label">কোর্স ফি</div>
+      <div class="price-amount">২,৫০০ ৳</div>
+      <div class="price-note">বাংলাদেশ কারিগরি শিক্ষা বোর্ডের সনদ অন্তর্ভুক্ত</div>
+      <a class="enroll-btn" href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank">✅ এখনই ভর্তি হন</a>
+      <div class="contact-note">অথবা সরাসরি যোগাযোগ করুন: 01841-742134</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © ২০২৫ দক্ষতা উন্নয়ন প্রশিক্ষণ কেন্দ্র · <a href="index.html">হোমপেজে ফিরুন</a> · 01841-742134
+</footer>
+
+<script>
+function selectThumb(el,emoji,caption){
+  document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('mainEmoji').textContent=emoji;
+  document.getElementById('galleryCaption').textContent=caption;
+}
+</script>
+</body>
+</html>
